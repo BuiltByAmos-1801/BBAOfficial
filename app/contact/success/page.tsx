@@ -1,29 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
-import Section from "@/components/Section";
 import Link from "next/link";
+import Head from "next/head";
 
-export const metadata = {
-  title: "Message Sent",
-};
-
-export default function ContactSuccessPage() {
-  useEffect(() => {
-    const t = setTimeout(() => {
-      window.location.href = "/";
-    }, 2500);
-    return () => clearTimeout(t);
-  }, []);
-
+export default function SuccessPage() {
   return (
-    <Section id="success" title="Thank you!">
-      <p className="text-zinc-700 dark:text-zinc-300">Your message has been sent. I will get back to you shortly.</p>
-      <p className="mt-4 text-sm">
-        Redirecting to home... or <Link className="underline" href="/">click here</Link>.
-      </p>
-    </Section>
+    <>
+      <Head>
+        <title>Message Sent</title>
+        <meta name="description" content="Your message was sent successfully" />
+      </Head>
+
+      <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
+        <h1 className="text-4xl font-bold mb-4">✅ Message Sent Successfully!</h1>
+        <p className="text-lg text-gray-600 mb-6">
+          Thank you for reaching out. I’ll get back to you soon.
+        </p>
+        <Link
+          href="/"
+          className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
+        >
+          Go Back Home
+        </Link>
+      </div>
+    </>
   );
 }
-
 
